@@ -21,3 +21,7 @@ The default value of `body-parser` has been changed and we should explicitly set
 ## [2-18.ejs](2-18.ejs) EJS Template
 
 There're differences between `<%-` and `<%=`.
+
+## 2-19~24
+
+The article doesn't explain how the files arrange. As a result, I don't know what to do to pass the parameter to the program. There're several errors. I will leave it and remain to be seen what I should do.
