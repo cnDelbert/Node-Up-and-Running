@@ -12,22 +12,40 @@ deleteDb = function(res, dbpath){
 		path: dbpath,
 		method: 'GET'
 	};
-	var request = http.request(opts);
-	request.end();
+	var request = http.request(opts).end();
 
 	request.on('response', function(res){
-		console.log(res.statusCode)
-		res.on('data', function(){})
+		console.log(res.statusCode);
+		res.on('data', function(){});
 		res.on('end', function(){
-			console.log('In');
 			if (res.statusCode == 200){
-				console.log('Done');
-				// TODO
+				// database deleted.
+				showDbs(res, "Deleted database.");
 			}else{
-				console.log('FAIL');
-				// TODO
+				showDbs(res, "Could not delete database.")
 			};
 		});
 	});
 };
-deleteDb();
+// deleteDb();
+
+createDb = function(res, dbname){
+	var opts = {
+		host: dbHost,
+		port: dbPort,
+		dbpath: '/',
+		method: 'PUT'
+	};
+	var request = http.request(opts).end();
+
+	request.on('response', function(res){
+		res.on('data', function(){});
+		res.on('end', function(){
+			if (res.statusCode == 201){
+				showDbs(res, dbname + ' created.');
+			} else {
+				showDbs(res, "Could not create " + dbname);
+			}
+		});
+	});
+};
