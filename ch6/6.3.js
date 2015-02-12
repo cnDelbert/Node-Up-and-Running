@@ -8,8 +8,9 @@ var opts = {
 }
 
 http.request(opts, function(response){
-	console.log(response.statusCode)
+	console.log(response.statusCode);
+	response.on('data', function(){});
 	response.on('end', function(){
-		console.log('Deleted.')
+		console.log('Deleted.');
 	})
 }).end();

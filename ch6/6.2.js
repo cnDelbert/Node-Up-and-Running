@@ -8,19 +8,15 @@ var opts = {
 }
 
 var callback = function(res){
-	console.log(res.statusCode)
-	res.on('data', function(chunk){
-		console.log(chunk.toString)
-		console.log('data');
-	})
+	console.log(res.statusCode);
+	res.on('data', function(){});
 	// TODO: why not run here?
-	res.on('close', function(){
-		console.log('111111111')
+	res.on('end', function(){
 		if(res.statusCode == 201){
-			console.log('Database successfully created.')
+			console.log('Database successfully created.');
 		} else {
-			console.log('Fail to create the database.')
-		}
+			console.log('Fail to create the database.');
+		};
 	});
 };
 
